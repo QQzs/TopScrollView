@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zs.demo.topscrollview.utils.DensityUtil;
+import com.zs.demo.topscrollview.utils.ScreenUtil;
 import com.zs.demo.topscrollview.view.topscorllview.indicator.IndicatorViewPager;
 import com.zs.demo.topscrollview.view.topscorllview.indicator.ScrollIndicatorView;
 import com.zs.demo.topscrollview.view.topscorllview.indicator.slidebar.ColorBar;
@@ -31,17 +32,19 @@ public class MainActivity extends FragmentActivity {
 
     private Context mContext;
     private MyAdapter adapter;
-//    private String[] mTitles = {"勇士", "马刺", "快船", "骑士"};
+//    private String[] mTitles = {"勇士", "马刺"};
     private String[] mTitles = {"勇士", "马刺", "凯尔特人", "骑士", "湖人", "爵士", "热火", "小牛", "雄鹿", "猛龙"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        int screenWidth = ScreenUtil.getScreenWidth(this);
         mContext = this;
         indicator_layout = findViewById(R.id.indicator_layout);
         viewPager = findViewById(R.id.moretab_viewPager);
 
+        // 当标签不多时，是否要占满屏幕
         indicator_layout.setSplitAuto(true);
         // 设置快捷返回tab
         indicator_layout.setPinnedTabView(true);
@@ -50,6 +53,7 @@ public class MainActivity extends FragmentActivity {
         // 设置滑块颜色
         ColorBar colorBar = new ColorBar(this, R.color.textColor,
                 DensityUtil.dip2px(this, 2), ScrollBar.Gravity.BOTTOM);
+//        indicator_layout.setScrollBarPadding(screenWidth/6);
         indicator_layout.setScrollBar(colorBar);
         // 设置选中标题颜色
         unSelectTextColor = getResources().getColor(R.color.defaultText);

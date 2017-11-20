@@ -29,6 +29,8 @@ public class FixedIndicatorView extends LinearLayout implements Indicator {
 
     private int mSelectedTabIndex = -1;
 
+    private int mScrollBarPadding = 0;
+
     public static final int SPLITMETHOD_EQUALS = 0;
     public static final int SPLITMETHOD_WEIGHT = 1;
     public static final int SPLITMETHOD_WRAP = 2;
@@ -237,6 +239,13 @@ public class FixedIndicatorView extends LinearLayout implements Indicator {
     };
 
     private ScrollBar scrollBar;
+    /**
+     * 设置滑块的左右间距
+     * @param padding
+     */
+    public void setScrollBarPadding(int padding){
+        mScrollBarPadding = padding;
+    }
 
     @Override
     public void setScrollBar(ScrollBar scrollBar) {
@@ -427,7 +436,7 @@ public class FixedIndicatorView extends LinearLayout implements Indicator {
 
             int saveCount2 = canvas.save();
             canvas.translate(offsetX, offsetY);
-            canvas.clipRect(0, 0, scrollBarWidth, scrollBarHeight); // needed
+            canvas.clipRect(mScrollBarPadding, 0, scrollBarWidth - mScrollBarPadding, scrollBarHeight); // needed
             //绘制前面一部分
             canvas.drawBitmap(cacheBitmap, 0, 0, null);
             canvas.restoreToCount(saveCount2);
@@ -438,7 +447,8 @@ public class FixedIndicatorView extends LinearLayout implements Indicator {
             canvas.drawBitmap(cacheBitmap, cacheMatrix, null);
         } else {
             canvas.translate(offsetX, offsetY);
-            canvas.clipRect(0, 0, scrollBarWidth, scrollBarHeight); // needed
+            canvas.clipRect(mScrollBarPadding, 0, scrollBarWidth - mScrollBarPadding, scrollBarHeight); // needed
+//            canvas.clipRect(0, 0, scrollBarWidth, scrollBarHeight); // needed
             //直接绘制
             scrollBar.getSlideView().draw(canvas);
         }

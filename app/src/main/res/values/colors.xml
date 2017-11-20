@@ -6,6 +6,7 @@
 
     <color name="textColor">#5b52b5</color>
     <color name="defaultText">#333333</color>
+    <color name="white">#ffffff</color>
 
     <color name="color1">#88a3f2</color>
     <color name="color2">#6883d3</color>

@@ -321,6 +321,10 @@ public class ScrollIndicatorView extends HorizontalScrollView implements Indicat
         fixedIndicatorView.setScrollBar(scrollBar);
     }
 
+    public void setScrollBarPadding(int padding){
+        fixedIndicatorView.setScrollBarPadding(padding);
+    }
+
     private float positionOffset;
 
     @Override
