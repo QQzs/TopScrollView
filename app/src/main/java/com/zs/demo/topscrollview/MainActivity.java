@@ -32,8 +32,8 @@ public class MainActivity extends FragmentActivity {
 
     private Context mContext;
     private MyAdapter adapter;
-//    private String[] mTitles = {"勇士", "马刺"};
-    private String[] mTitles = {"勇士", "马刺", "凯尔特人", "骑士", "湖人", "爵士", "热火", "小牛", "雄鹿", "猛龙"};
+    private String[] mTitles = {"勇士", "马刺"};
+//    private String[] mTitles = {"勇士", "马刺", "凯尔特人", "骑士", "湖人", "爵士", "热火", "小牛", "雄鹿", "猛龙"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,7 @@ public class MainActivity extends FragmentActivity {
         // 设置滑块颜色
         ColorBar colorBar = new ColorBar(this, R.color.textColor,
                 DensityUtil.dip2px(this, 2), ScrollBar.Gravity.BOTTOM);
+        colorBar.setWidth(DensityUtil.dip2px(this, 60));
 //        indicator_layout.setScrollBarPadding(screenWidth/6);
         indicator_layout.setScrollBar(colorBar);
         // 设置选中标题颜色
